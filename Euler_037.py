@@ -38,9 +38,11 @@ print(f'found the primes below {limit} in {time.time() - start} seconds')
 
 # remove any primes with a bad digit
 badDigits = ['0', '4', '6', '8']
+allPrimesDict = {2:None}
 primesDict = {2:None}
 for prime in primes:
-    if hasBadDigit(num,badDigits):
+    allPrimesDict[prime] = None
+    if hasBadDigit(prime,badDigits):
         continue
     else:
         primesDict[prime] = None
@@ -48,6 +50,7 @@ print(f'removed primes with bad digits in {time.time() - start} seconds')
 
 # sum truncatable primes
 primesSum = 0
+truncatablePrimes = []
 for prime in primesDict:
     if prime < 10:
         continue
@@ -60,7 +63,7 @@ for prime in primesDict:
         digitsLeft.pop(0)
         while digitsLeft != []:
             testNum = ''.join(digitsLeft)
-            if int(testNum) not in primesDict:
+            if int(testNum) not in allPrimesDict:
                 isTruncatable = False
                 break
             digitsLeft.pop(0)
@@ -71,13 +74,15 @@ for prime in primesDict:
         digitsRight.pop(-1)
         while digitsRight != []:
             testNum = ''.join(digitsRight)
-            if int(testNum) not in primesDict:
+            if int(testNum) not in allPrimesDict:
                 isTruncatable = False
                 break
             digitsRight.pop(-1)
     
     if isTruncatable:
         primesSum += prime
-            
-print(f'the prime_sum is {primesSum}')
+        truncatablePrimes.append(prime)
+
+print(truncatablePrimes)
+print(f'the primesSum is {primesSum}')
 print(f'all finished in {time.time() - start} seconds')
