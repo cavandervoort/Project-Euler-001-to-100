@@ -7,6 +7,7 @@ largestFactor = 1
 
 for num in range(3,100000,2):
     for prime in primes:
+        print(f'testing prime of {prime}')
         if num % prime == 0:
             break
         elif prime > num ** 0.5:
