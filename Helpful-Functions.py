@@ -2,7 +2,7 @@
 
 # Find Primes
 
-def get_primes(n):
+def getPrimes(n):
     primeArray = [0,0] + [1] * (n-1)
     for pos in range(2, int(n ** 0.5)+1):
         if primeArray[pos] == 1:
