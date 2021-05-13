@@ -10,7 +10,7 @@ for num in range(3,100000,2):
         if num % prime == 0:
             break
         elif prime > num ** 0.5:
-            print(f'testing prime of {prime}')
+            print(f'testing prime of {num}')
             primes.append(num)
             if bigNum % num == 0:
                 largestFactor = num
